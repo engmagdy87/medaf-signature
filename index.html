@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Gmail Signature</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
+
+      body {
+        font-family: "Fira Sans", sans-serif;
+      }
+      .wrapper {
+        display: flex;
+        height: 150px;
+      }
+      .wrapper__img-box {
+        /* width: 90%; */
+        height: 150px;
+        display: flex;
+        /* justify-content: center;
+        align-items: center; */
+      }
+      .divider {
+        /* width: 4px; */
+        height: 150px;
+        background: #e4343a;
+        height: 80%;
+        margin-top: 3%;
+        margin-left: 5%;
+        width: 4px;
+      }
+      .wrapper__img {
+        width: 100%;
+        /* margin-right: 35px; */
+        margin-top: 13px;
+      }
+      .wrapper__separator {
+        width: 4px;
+        height: 85%;
+        margin: 0 16px;
+        background-color: #e33237;
+      }
+      .wrapper__text {
+        width: 50%;
+      }
+      .p1 {
+        margin: 4px 0 4px 16px;
+        font-weight: 900;
+        font-size: 20px;
+        color: rgba(4, 4, 4, 0.75);
+        /* margin-left: 20px; */
+      }
+      .p2 {
+        margin: 4px 0 4px 16px;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 20px;
+        color: rgba(4, 4, 4, 0.7);
+        /* margin-left: 20px; */
+      }
+      .p3 {
+        margin: 4px 0 4px 16px;
+        /* font-weight: lighter; */
+        font-size: 16px;
+        text-decoration: none;
+        color: rgba(4, 4, 4, 0.75);
+        /* margin-left: 20px; */
+      }
+      .p4 {
+        margin: 4px 0 4px 16px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 16px;
+        color: #e33237 !important;
+        text-decoration: none;
+        /* margin-left: 20px; */
+      }
+      tr {
+        width: 100% !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content"></div>
+  </body>
+  <script type="module">
+    import data from "./data.js";
+
+    const content = document.getElementById("content");
+    let dataString = "";
+
+    data.map(member => {
+      dataString =
+        dataString +
+        `<table
+          style="width: 740px; line-height:normal;"
+          cellpadding="0"
+          cellspacing="0"
+        >
+          <tbody>
+            <td class="wrapper__img-box">
+              <a href="https://www.medafinvestment.com" target="_blank">
+                <img
+                  class="wrapper__img"
+                  src="https://i.postimg.cc/0jqhhb0Z/logo.png"
+                  alt="logo"
+                />
+              </a>
+              <div class="divider"></div>
+            </td>
+            <td>
+              <table cellpadding="0" cellspacing="0" style="line-height: 15px;">
+                <tbody>
+                  <tr>
+                    <td><p class="p1">${member.firstName.toUpperCase() +
+                      " " +
+                      member.lastName.toUpperCase()}</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="p2">${member.title}</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="p2">${member.company}</p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="p3">${member.mobile}</p></td>
+                  </tr>
+                  <tr>
+                    <td style="display: flex">
+                      <a class="p3">${member.email}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a class="p4">www.medafinvestment.com</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tbody>
+        </table>
+        <p
+          style="width: 740px; line-height:normal; text-align: justify; font-size: 8px; color: black"
+        >
+          This email is intended only for the person to whom it is addressed and/or
+          otherwise authorised personnel. The information contained herein and
+          attached is confidential and the property of Medaf. If you are not the
+          intended recipient, please be advised that viewing this message and any
+          attachments, as well as copying, forwarding, printing, and disseminating
+          any information related to this email is prohibited, and that you should
+          not take any action based on the content of this email and/or its
+          attachments. If you received this message in error, please contact the
+          sender and destroy all copies of this email and any attachment. Please
+          note that the views and opinions expressed herein are solely those of the
+          author and do not necessarily reflect those of the company. While
+          antivirus protection tools have been employed, you should check this email
+          and attachments for the presence of viruses. No warranties or assurances
+          are made in relation to the safety and content of this email and
+          attachments. Medaf accepts no liability for any damage caused by any virus
+          transmitted by or contained in this email and attachments. No liability is
+          accepted for any consequences arising from this email.
+        </p>`;
+    });
+    content.innerHTML = dataString;
+  </script>
+</html>
